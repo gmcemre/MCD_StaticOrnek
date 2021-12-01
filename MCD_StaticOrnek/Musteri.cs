@@ -54,11 +54,57 @@ namespace MCD_StaticOrnek
         }
         #endregion
 
-        private bool musteriKullaniciAdiKontrol(string value)
+        #region Static Metotlar
+       static bool musteriKullaniciAdiKontrol(string _kullaniciAdi)
         {
-            throw new NotImplementedException();
+            bool Kontrol = false;
+            for (int i = 0; i < musteriDatabase .Count ; i++)
+            {
+                Musteri Temp = (Musteri)musteriDatabase[i];
+                if (Temp .kullaniciAdi ==_kullaniciAdi )
+                {
+                    Kontrol = true;
+                    break;
+                }
+            }
+            return Kontrol;
+        }
+        #endregion 
+
+        public static void MusteriEkle(Musteri M)
+        {
+            #region Parametre Kontrol
+            if (M!= null && !string .IsNullOrEmpty (M.kullaniciAdi ) && !string .IsNullOrEmpty (M.emailAdres ))
+            {
+                bool emailAdresKontrol = musteriEmailAdresKontrol(M.emailAdres);
+                if (emailAdresKontrol )
+                {
+                    Console.WriteLine("Eklemek istediğiniz kullanıcı sistemde kayıtlı.");
+                }
+                else
+                {
+                    musteriDatabase.Add(M);
+                    Console.WriteLine("Yeni kayıt işlemi başarılı.");
+                }
+            }
+            #endregion 
         }
 
+        static bool musteriEmailAdresKontrol(string _emailAdres)
+        {
+            bool Kontrol = false;
+            for (int i = 0; i < musteriDatabase .Count ; i++)
+            {
+                Musteri Temp = (Musteri)musteriDatabase[i];
+                if (Temp .emailAdres ==_emailAdres )
+                {
+                    Kontrol = true;
+                    break;
+                }
+
+            }
+            return Kontrol;
+        }
 
         
     }
