@@ -10,7 +10,7 @@ namespace MCD_StaticOrnek
     public class Musteri
     {
         #region Sanal Database
-        static ArrayList musteriDatabase;
+        public static ArrayList musteriDatabase;
         #endregion
 
         #region Static Yapıcı Metot
@@ -26,7 +26,7 @@ namespace MCD_StaticOrnek
         public string soyisim { get; set; }
         public string emailAdres { get; set; }
         public string kullaniciAdi { get; set; }
-        public int sifre { get; set; }
+        public string  sifre { get; set; }
 
         #endregion
 
